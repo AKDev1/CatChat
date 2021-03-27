@@ -43,7 +43,7 @@ li{
   padding: 5px 25px;
 }
 
-li:hover{
+nav ul li ul li:hover{
   transform: scale(1.2);
   color: red;
 }
@@ -141,6 +141,11 @@ img:hover {
   .menu1{
     display: block;
     font-size: 20px;
+  }
+  
+  .menu1:active{
+    transform: scale(1.2);
+    color: red;
   }
 
   .form-center h2{
