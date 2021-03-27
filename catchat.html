@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="catchat.css">
+    <title>CatChat</title>
+  </head>
+  <body>
+    <div class="main_div">
+      <h1 class="heading">FIND YOUR <b>MEOW!</b></h1>
+      <div class="nav">
+        <nav>
+          <ul class="menu">
+            <li class="menu1">Menu</li>
+              <li>
+              <ul id="dropList">
+                <a href="catchat.html"><li>Profile</li></a>
+                <a href="catchat.html"><li>Top</li></a>
+                <a href="catchat.html"><li>Contact</li></a>
+              </ul>
+              </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="first_div" id="firstdiv"></div>
+      <div class="second_div" id = "seconddiv"></div>
+    </div>
+
+    <script>
+      function likeThis(){
+        alert("LIKE HIM?");
+      }
+
+      var dropList = document.getElementById("dropList");
+      dropList.style.maxHeight = "0px";
+
+      function dropDown(){
+        if(dropList.style.maxHeight == "0px"){
+          dropList.style.maxHeight = "120px";
+        }
+
+        else{
+          dropList.style.maxHeight = "0px";
+        }
+      }
+
+      for (var i = 0; i < 10; i++){
+        fetch('https://api.thecatapi.com/v1/images/search').then((apidata) => {
+            return apidata.json();
+          }).then((data) => {
+              let val = data[0].url;
+              let img = document.createElement("img");
+              img.setAttribute('src', `${val}`);
+              img.setAttribute('onclick', 'likeThis()');
+              img.setAttribute('height', '300px');
+              img.setAttribute('width', '300px');
+              firstdiv.appendChild(img);
+          });
+      }
+      for (var i = 0; i < 10; i++){
+        fetch('https://api.thecatapi.com/v1/images/search').then((apidata) => {
+            return apidata.json();
+          }).then((data) => {
+              let val = data[0].url;
+              let img = document.createElement("img");
+              img.setAttribute('src', `${val}`);
+              img.setAttribute('onclick', 'likeThis()');
+              img.setAttribute('height', '300px');
+              img.setAttribute('width', '300px');
+              seconddiv.appendChild(img);
+          });
+      }
+    </script>
+  </body>
+</html>
